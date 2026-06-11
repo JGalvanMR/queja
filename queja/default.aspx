@@ -52,7 +52,7 @@
             if (str.indexOf("189.206.160.206") != -1) {
                 web();
             }*/
-            window.open("http://189.206.160.206:81/quejas/rechazos/quejas_dashboard.html", "_black"); 
+            window.open("http://189.206.160.206:82/rechazos/quejas_dashboard.html", "_black"); 
         }
 
         function lan() {
