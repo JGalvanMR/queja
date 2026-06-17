@@ -168,9 +168,9 @@ namespace queja
             reader.Dispose();
             cmd.Dispose();
             conn.Close();
-            
+
             List<ItemCombo> lista = new List<ItemCombo>();
-            foreach(DataRow row in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 lista.Add(new ItemCombo
                 {
@@ -312,7 +312,7 @@ namespace queja
             }
 
             return lista;
-            
+
         }
 
         [WebMethod]
@@ -536,7 +536,7 @@ namespace queja
             {
                 Variedad = variedad
             });
-            
+
 
             return lista;
         }
@@ -549,7 +549,7 @@ namespace queja
             {
                 cajas_prod = cajas_producidas_folio(folio, prod);
             }
-            if (tipo =="PTP")
+            if (tipo == "PTP")
             {
                 cajas_prod = cajas_producidas_folio2(folio, prod, "");
             }
@@ -560,7 +560,7 @@ namespace queja
             {
                 Producidas = cajas_prod
             });
-            
+
             return lista;
         }
 
@@ -850,7 +850,7 @@ namespace queja
         }
 
         [WebMethod]
-        public string GuardarQueja(string folio, string semana, string fecha, string mes, string cliprim, string cliente, string sucursal, string reporto, string recibio, 
+        public string GuardarQueja(string folio, string semana, string fecha, string mes, string cliprim, string cliente, string sucursal, string reporto, string recibio,
             string cedis, string usuario, string tipo, string subclifolio, string pedido, string observaciones, string costo, string consumidor, string producto, string problema, string ordprod, string area,
             string responsable, string cantrecha, string cantreci, string unidad, string devolucion, string moneda, string cveprov, string cverch, string cvetbl, string variedad,
             string lote, string nomprod, string fechacad, string ptcptp, string cjsprod, string porcen, string merma, string bonificacion, string rechazo, string noaplica,
@@ -862,7 +862,7 @@ namespace queja
             string fechainv = "";
             string area_queja = "";
             string cnte = "";
-            string sememb = ""; 
+            string sememb = "";
             string fechaemb = "";
 
             string consu = (consumidor == "True") ? "1" : "0";
@@ -889,7 +889,7 @@ namespace queja
                 cnte = BuscarClientePedido(pedido, tipo, cedis, usuario);
                 //fechaemb = fecha_embarque(pedido, tipo, usuario);
                 sememb = SemanaEmb(fchf).ToString();
-                
+
             }
 
             SqlConnection conn = new SqlConnection("Data Source=192.168.123.6,1433;Initial Catalog=GAB_Irapuato;Persist Security Info=True;User ID=sa;Password=Gabira2026$; Connect Timeout = 240");
@@ -916,7 +916,7 @@ namespace queja
                 }
                 else
                 {
-                    
+
                     cuerpo = "INSERT INTO tb_mstr_quejas(que_semana, que_fecha, que_mes, que_cliprim, que_cliente, que_sucursal, que_reporto, que_recibio, que_status, cedis, resp_usuario, que_tipo, que_fechainv, area_queja, " +
                     "subcli_folio, que_pedido, que_observacion, que_costo, que_cnte, que_consumidor) " +
                     "VALUES('" + semana + "', '" + fecha + "', '" + mes + "', '" + cliprim + "', '" + cliente + "', '" + sucursal + "', '" + reporto.ToUpper() + "', '" + recibio + "', 'A', '" + cedis + "', " +
@@ -1158,7 +1158,7 @@ namespace queja
                             cmd.CommandText = "SELECT A.fcn_folio, A.pdn_folio, FORMAT(A.fcn_fecha, 'dd-MM-yyyy') As fecha FROM tb_mstr_facturas_nal A JOIN tb_det_facturas B " +
                                 "ON A.fcn_folio = B.fcn_folio AND A.fcn_lugar = B.fcn_tipo " +
                                 "WHERE A.pdn_folio = '" + pedido + "' /*AND A.fcn_lugar <> '" + val_tipo + "' AND B.fcn_tipo = '" + val_tipo + "'*/ AND B.prod_clave = '" + producto + "'";
-                            
+
                         else if (expnal == "E")
                             cmd.CommandText = "SELECT A.fcn_folio, A.pdn_folio, FORMAT(A.fcn_fecha, 'dd-MM-yyyy') As fecha FROM tb_mstr_facturas_nal A JOIN tb_det_facturas B " +
                                 "ON A.fcn_folio = B.fcn_folio AND A.fcn_lugar = B.fcn_tipo " +
@@ -1417,10 +1417,10 @@ namespace queja
         {
             string str1 = "http://189.206.160.206:81/quejas/";
             string str2 = "http://gabira1:81/quejas/";
-            string cuerpo = "<table border='2'><tr><td align='center'><h2>Registro de Queja</h2></td></tr><tr><td>Registro de queja realizado por: " + nombre + 
-                "</td></tr><tr><td>CEDIS: " + cedis + "</td></tr><tr><td>Fecha: " + fecha + 
-                "</td></tr><tr><td>Queja: No. " + queja + "</td></tr><tr><td>Clave y nombre producto: " + cveprod + " " + nomprod + 
-                "</td></tr><tr><td>Problema: " + problema + "</td></tr><tr><td>Cliente: " + cliente + 
+            string cuerpo = "<table border='2'><tr><td align='center'><h2>Registro de Queja</h2></td></tr><tr><td>Registro de queja realizado por: " + nombre +
+                "</td></tr><tr><td>CEDIS: " + cedis + "</td></tr><tr><td>Fecha: " + fecha +
+                "</td></tr><tr><td>Queja: No. " + queja + "</td></tr><tr><td>Clave y nombre producto: " + cveprod + " " + nomprod +
+                "</td></tr><tr><td>Problema: " + problema + "</td></tr><tr><td>Cliente: " + cliente +
                 "</td></tr><tr><td>Pedido: " + pedido + "</td></tr><tr><td>Costo: " + costo + "</td></tr></table><br />" +
                 "<p><h4>Ir a la seccion de Editar Queja para asignaci&oacute; de &Aacute;rea</h4></p><br /><p>Entrar al sistema de quejas</p>" +
                 "<br />Enlace dentro de instalaciónes de Comercializadora GAB: " + str2 + "<br />Enlace fuera de instalaciónes de Comercializadora GAB: " + str1;
@@ -1851,7 +1851,7 @@ namespace queja
                     {
                         while (read.Read())
                         {
-                            if (read["rpt_flete"].ToString().Trim() != "" && read["rpt_flete"].ToString().Trim() != "S/F" && read["rpt_flete"].ToString().Trim() != "AJUSTE")
+                            if (read["rpt_flete"].ToString().Trim() != "" && read["rpt_flete"].ToString().Trim() != "S/F" && read["rpt_flete"].ToString().Trim() != "AJUSTE" && read["rpt_flete"].ToString().Trim() != "N.CRED")
                                 flete_campo = Convert.ToInt32(read["rpt_flete"].ToString().Trim());
                             else
                                 flete_campo = 0;
@@ -2030,7 +2030,7 @@ namespace queja
 
             return dataTable;
         }
-        
+
         //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         [WebMethod(EnableSession = true)]
         public void SubirArchivos()
@@ -2249,7 +2249,7 @@ namespace queja
             public string Cons { get; set; }
         }
 
-        public class ListaFacturas 
+        public class ListaFacturas
         {
             public string FolFact { get; set; }
             public string CanFact { get; set; }
